@@ -1,17 +1,21 @@
 import os
 import streamlit as st
-
 from file_checker import checkFile
-
-st.title("Malware Detection using Random Forest Algorithm")
-st.markdown("""### Demo: [Youtube]() 
-Malwares can wreak havoc on a computer and its network. Hackers use it to steal passwords, delete files and render computers inoperable. A malware infection can cause many problems that affect daily operation and the long-term security of your company.
-
-This is a python program for detecting whether a given file is 
-a probable malware or not! It uses [Random Forest Algorithm](https://en.wikipedia.org/wiki/Random_forest) for 
-classification.""")
-st.markdown("##### Dataset used: [Kaggle](https://www.kaggle.com/competitions/malware-detection/data)")
-st.subheader("Try yourself:-")
+def main():
+        st.markdown(
+            f"""
+            <style>
+            .reportview-container {{
+                background-size: cover;
+            }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+st.title("A Strategy for Effective Detection of Malware")
+st.markdown("""
+Malwares can wreak havoc on a computer and its network. Hackers use it to steal passwords, delete files and render computers inoperable. A malware infection can cause many problems that affect daily operation and the long-term security of your company..""")
+st.subheader("Check yourself:-")
 
 file = st.file_uploader("Upload a file to check for malwares:", accept_multiple_files=True)
 if len(file):
@@ -24,3 +28,5 @@ if len(file):
                 st.write(f"File {i.name} seems *LEGITIMATE*!")
             else:
                 st.markdown(f"File {i.name} is probably a **MALWARE**!!!")
+if __name__ == "__main__":
+    main()
